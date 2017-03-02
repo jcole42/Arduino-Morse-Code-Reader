@@ -40,12 +40,17 @@ int CODE[][] = [
 [1,1,1,1,0], //9
 [1,1,1,1,1]  //0
 ];
-dotLength = 1000; //ms
+ 
+
+volatile int DOT_LENGTH = 1000; //ms
+
 void setup() {
   lcd.begin(16, 2);
   Serial.begin(9600);
+
 }
 //lcd.print(<something>), lcd.setCursor(column, row)
 void loop() {
   analogWrite(6, 70);
+  DOT_LENGTH = map(analogRead(A0), 0, 1023, 200, 1000);
 }
